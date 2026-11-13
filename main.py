@@ -1,30 +1,5 @@
-class Voiture:
-    def __init__(self, couleur, taille, orientation, coordonnees_x, coordonnees_y):
-        self.couleur = couleur
-        self.symbole = "R"
-        self.taille = 2
-        self.orientation = "H"
-        self.coordonnees_x = 2
-        self.coordonnees_y = 0
-
-    def avancer(self, nb_cases, plateau):
-        for i in range(self.taille):
-            plateau.grille[2][self.coordonnees_y + i] = "x"
-        self.coordonnees_y = self.coordonnees_y + nb_cases
-        for i in range(self.taille):
-            plateau.grille[2][self.coordonnees_y + i] = "R"
-
-
-class Plateau:
-    def __init__(self):
-        self.grille = []
-        for i in range(6):
-            self.grille.append(["x", "x", "x", "x", "x", "x"])
-
-    def afficher(self):
-        print("0 1 2 3 4 5")
-        for i in range(6):
-            print(self.grille[i][0], self.grille[i][1], self.grille[i][2], self.grille[i][3], self.grille[i][4], self.grille[i][5])
+from plateau import Plateau
+from voiture import Voiture
 
 plateau = Plateau()
 voiture_rouge = Voiture("rouge", 2, "H", 2, 0)
