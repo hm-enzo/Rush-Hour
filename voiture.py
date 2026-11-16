@@ -6,6 +6,7 @@ class Voiture:
         self.orientation = "H"
         self.coordonnees_x = 2
         self.coordonnees_y = 0
+        Historique_Voiture.append(self)
 
     def avancer(self, nb_cases, plateau):
         for i in range(self.taille):
