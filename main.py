@@ -25,6 +25,11 @@ while gagne == False:
         if direction == "droite":
             if voiture_rouge.coordonnees_y < 4:
                 voiture_rouge.avancer(1, plateau)
+
+        if direction == "haut":
+            if voiture
+
+            
             else:
                 print("Pas possible")
         else:
