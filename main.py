@@ -10,6 +10,11 @@ voiture_grise = Voiture("grise", 2, "V", 4, 0)
 voiture_violet = Voiture("violet", 2, "V", 2, 5)
 voiture_beige = Voiture("beige", 2, "V", 4, 5)
 voiture_orange = Voiture("orange", 2, "H", 0, 4)
+voiture_rose = Voiture("rose", 2, "V", 2, 3)
+voiture_bleue = Voiture("bleue", 2, "V", 2, 2)
+
+
+
 
 
 
