@@ -1,6 +1,8 @@
 from plateau import Plateau
 from voiture import Voiture
 
+Historique_voiture
+
 plateau = Plateau()
 voiture_rouge = Voiture("rouge", 2, "H", 2, 0)
 
