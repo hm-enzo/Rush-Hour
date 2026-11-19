@@ -1,6 +1,20 @@
 from plateau import Plateau
 from voiture import Voiture
 
+Quantite_Voiture_Rouge=0
+Historique_Voiture=[]
+
+for Voiture_faite in Historique_Voiture:
+    if Voiture_faite.couleur=="rouge":
+        Quantite_Voiture_Rouge+=1
+assert Quantite_Voiture_Rouge==1, "Il y a plus d'une voiture rouge sur le plateau"
+
+plateau = Plateau()
+voiture_rouge = Voiture("rouge", 2, "H", 2, 0)
+
+plateau.grille[2][0] = "R"
+plateau.grille[2][1] = "R"
+
 gagne = False
 
 while gagne == False:
@@ -11,19 +25,21 @@ while gagne == False:
         direction = input("Dans quelle direction ? (gauche ou droite) ")
 
         if direction == "gauche":
-            deplacement = -1
-        elif direction == "droite":
-            deplacement = 1
-        else:
-            deplacement = 0
-            print("Pas possible")
+            if voiture_rouge.coordonnees_y > 0:
+                voiture_rouge.avancer(-1, plateau)
+            else:
+                print("Pas possible")
 
-        if deplacement != 0:
-            if not voiture_rouge.avancer(deplacement, plateau):
-                print("Pas possible : collision ou bord du plateau")
+        if direction == "droite":
+            if voiture_rouge.coordonnees_y < 4:
+                voiture_rouge.avancer(1, plateau)
+            else:
+                print("Pas possible")
+        else:
+            print("Pas possible")
     else:
         print("Pas possible")
-
+        
     if voiture_rouge.coordonnees_y == 4:
         gagne = True
 
