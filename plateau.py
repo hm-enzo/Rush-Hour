@@ -2,7 +2,7 @@ class Plateau:
     def __init__(self):
         self.grille = []
         for i in range(6):
-            self.grille.append(["x", "x", "x", "x", "x", "x"])
+            self.grille.append([".", ".", ".", ".", ".", "."])
 
     def afficher(self):
         print("0 1 2 3 4 5")
