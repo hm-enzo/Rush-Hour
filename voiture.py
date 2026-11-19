@@ -24,7 +24,7 @@ class Voiture:
 
     def effacer(self, plateau):
         for ligne, colonne in self.cases():
-            plateau.grille[ligne][colonne] = "x"
+            plateau.grille[ligne][colonne] = "."
 
     def peut_avancer(self, nb_cases, plateau):
         """Collision : False si la voiture sort du plateau ou touche une autre voiture."""
@@ -37,7 +37,7 @@ class Voiture:
             if not (0 <= ligne < 6 and 0 <= colonne < 6):
                 return False
             case = plateau.grille[ligne][colonne]
-            if case != "x" and case != self.symbole:
+            if case != "." and case != self.symbole:
                 return False
         return True
 
