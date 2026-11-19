@@ -17,6 +17,34 @@ voiture_bleue = Voiture("bleue", 2, "V", 2, 2)
 plateau.grille[2][0] = "R"
 plateau.grille[2][1] = "R"
 
+plateau.grille[4][1] = "J"
+plateau.grille[4][2] = "J"
+plateau.grille[4][3] = "J"
+
+plateau.grille[0][1] = "V"
+plateau.grille[1][1] = "V"
+
+plateau.grille[3][4] = "N"
+plateau.grille[4][4] = "N"
+
+plateau.grille[4][0] = "G"
+plateau.grille[5][0] = "G"
+
+plateau.grille[2][5] = "P"
+plateau.grille[3][5] = "P"
+
+plateau.grille[4][5] = "B"
+plateau.grille[5][5] = "B"
+
+plateau.grille[0][4] = "O"
+plateau.grille[0][5] = "O"
+
+plateau.grille[2][3] = "RO"
+plateau.grille[3][3] = "RO"
+
+plateau.grille[2][2] = "BL"
+plateau.grille[3][2] = "BL"
+
 gagne = False
 
 while gagne == False:
