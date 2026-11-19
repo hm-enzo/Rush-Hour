@@ -6,6 +6,7 @@ class Voiture:
         self.orientation = orientation
         self.coordonnees_x = coordonnees_x  # ligne
         self.coordonnees_y = coordonnees_y  # colonne
+        self.nb_mouvement = 0 #nombre de deplacements effectués
 
     def cases(self, x=None, y=None):
         """Liste des (ligne, colonne) occupées par la voiture (à une position donnée)."""
@@ -49,5 +50,6 @@ class Voiture:
             self.coordonnees_y += nb_cases
         else:
             self.coordonnees_x += nb_cases
+        self.nb_mouvement+=1 
         self.placer(plateau)
         return True
