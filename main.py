@@ -19,10 +19,16 @@ gagne = False
 
 while gagne == False:
     plateau.afficher()
-    mouvement = input("Quelle voiture voulez-vous déplacer ? ")
+    choix = input("Quelle voiture voulez-vous déplacer ? (R, J, V, N, G, P, B, O, S, L) ").upper()
 
-    if mouvement == "R" or mouvement == "r":
-        direction = input("Dans quelle direction ? (gauche ou droite) ")
+    if choix not in voitures_par_symbole:
+        print("Pas possible : voiture inconnue")
+        continue
+
+    voiture = voitures_par_symbole[choix]
+    directions_possibles = DIRECTIONS[voiture.orientation]
+    texte = " ou ".join(directions_possibles)
+    direction = input("Dans quelle direction ? (" + texte + ") ").lower()
 
         if direction == "gauche":
             if voiture_rouge.coordonnees_y > 0:

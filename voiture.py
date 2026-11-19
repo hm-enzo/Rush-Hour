@@ -1,3 +1,6 @@
+from plateau import VIDE
+
+
 class Voiture:
     def __init__(self, couleur, taille, orientation, coordonnees_x, coordonnees_y, symbole):
         self.couleur = couleur
@@ -6,7 +9,6 @@ class Voiture:
         self.orientation = orientation
         self.coordonnees_x = coordonnees_x  # ligne
         self.coordonnees_y = coordonnees_y  # colonne
-        self.nb_mouvement = 0 #nombre de deplacements effectués
 
     def cases(self, x=None, y=None):
         """Liste des (ligne, colonne) occupées par la voiture (à une position donnée)."""
@@ -24,7 +26,7 @@ class Voiture:
 
     def effacer(self, plateau):
         for ligne, colonne in self.cases():
-            plateau.grille[ligne][colonne] = "."
+            plateau.grille[ligne][colonne] = VIDE
 
     def peut_avancer(self, nb_cases, plateau):
         """Collision : False si la voiture sort du plateau ou touche une autre voiture."""
@@ -37,7 +39,7 @@ class Voiture:
             if not (0 <= ligne < 6 and 0 <= colonne < 6):
                 return False
             case = plateau.grille[ligne][colonne]
-            if case != "." and case != self.symbole:
+            if case != VIDE and case != self.symbole:
                 return False
         return True
 
@@ -50,6 +52,15 @@ class Voiture:
             self.coordonnees_y += nb_cases
         else:
             self.coordonnees_x += nb_cases
-        self.nb_mouvement+=1 
         self.placer(plateau)
         return True
+
+    def avancer_jusqu_au_bout(self, sens, plateau):
+        """Avance (sens = -1 ou 1) jusqu'au mur ou à la prochaine voiture.
+        Renvoie le nombre de cases parcourues (0 si bloquée tout de suite)."""
+        nb_cases = 0
+        while self.peut_avancer(sens * (nb_cases + 1), plateau):
+            nb_cases += 1
+        if nb_cases > 0:
+            self.avancer(sens * nb_cases, plateau)
+        return nb_cases
