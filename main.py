@@ -1,6 +1,14 @@
 from plateau import Plateau
 from voiture import Voiture
 
+Quantite_Voiture_Rouge=0
+Historique_Voiture=[]
+
+for Voiture_faite in Historique_Voiture:
+    if Voiture_faite.couleur=="rouge":
+        Quantite_Voiture_Rouge+=1
+assert Quantite_Voiture_Rouge==1, "Il y a plus d'une voiture rouge sur le plateau"
+
 plateau = Plateau()
 voiture_rouge = Voiture("rouge", 2, "H", 2, 0)
 voiture_jaune = Voiture("jaune", 3, "V", 1, 4)
@@ -80,7 +88,7 @@ while gagne == False:
             print("Pas possible")
     else:
         print("Pas possible")
-
+        
     if voiture_rouge.coordonnees_y == 4:
         gagne = True
 
