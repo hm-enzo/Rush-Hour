@@ -41,11 +41,11 @@ plateau.grille[4][5] = "N"
 plateau.grille[5][4] = "G"
 plateau.grille[5][5] = "G"
 
-# Violette
+# Rose
 plateau.grille[4][2] = "P"
 plateau.grille[5][2] = "P"
 
-# Beige
+# Bleue
 plateau.grille[4][1] = "B"
 plateau.grille[5][1] = "B"
 
@@ -62,9 +62,6 @@ plateau.grille[3][2] = "S"
 plateau.grille[4][0] = "L"
 plateau.grille[5][0] = "L"
 
-plateau.grille[4][1] = "J"
-plateau.grille[4][2] = "J"
-
 plateau.grille[0][1] = "V"
 plateau.grille[1][1] = "V"
 
@@ -73,9 +70,6 @@ plateau.grille[4][4] = "N"
 
 plateau.grille[4][0] = "G"
 plateau.grille[5][0] = "G"
-
-plateau.grille[2][5] = "Vi"
-plateau.grille[3][5] = "Vi"
 
 plateau.grille[4][5] = "Be"
 plateau.grille[5][5] = "Be"
