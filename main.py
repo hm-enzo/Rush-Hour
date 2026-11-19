@@ -3,57 +3,59 @@ from voiture import Voiture
 
 plateau = Plateau()
 voiture_rouge = Voiture("rouge", 2, "H", 2, 0)
-voiture_jaune = Voiture("jaune", 3, "H", 4, 1)
-voiture_vert = Voiture("vert clair", 2, "V", 0, 1)
-voiture_noire = Voiture("noire", 2, "V", 3, 4) #voiture noire = voiture verte foncee sur carte
-voiture_grise = Voiture("grise", 2, "V", 4, 0)
-voiture_violet = Voiture("violet", 2, "V", 2, 5)
-voiture_beige = Voiture("beige", 2, "V", 4, 5)
-voiture_orange = Voiture("orange", 2, "H", 0, 4)
-voiture_rose = Voiture("rose", 2, "V", 2, 3)
-voiture_bleue = Voiture("bleue", 2, "V", 2, 2)
+voiture_jaune = Voiture("jaune", 3, "V", 1, 4)
+voiture_vert = Voiture("vert clair", 2, "V", 1, 2)
+voiture_noire = Voiture("noire", 2, "H", 4, 4)
+voiture_grise = Voiture("grise", 2, "H", 5, 4)
+voiture_violet = Voiture("violet", 2, "V", 4, 2)
+voiture_beige = Voiture("beige", 2, "V", 4, 1)
+voiture_orange = Voiture("orange", 2, "V", 2, 5)
+voiture_rose = Voiture("rose", 3, "H", 3, 0)
+voiture_bleue = Voiture("bleue", 2, "V", 4, 0)
 
 
-# Voiture rouge
+# Rouge
 plateau.grille[2][0] = "R"
 plateau.grille[2][1] = "R"
 
-# Voiture jaune
-plateau.grille[4][1] = "J"
-plateau.grille[4][2] = "J"
-plateau.grille[4][3] = "J"
+# Jaune
+plateau.grille[1][4] = "J"
+plateau.grille[2][4] = "J"
+plateau.grille[3][4] = "J"
 
-# Voiture vert clair
-plateau.grille[0][1] = "V"
-plateau.grille[1][1] = "V"
+# Vert clair
+plateau.grille[1][2] = "V"
+plateau.grille[2][2] = "V"
 
-# Voiture noire
-plateau.grille[3][4] = "N"
+# Noire (turquoise)
 plateau.grille[4][4] = "N"
+plateau.grille[4][5] = "N"
 
-# Voiture grise
-plateau.grille[4][0] = "G"
-plateau.grille[5][0] = "G"
+# Grise
+plateau.grille[5][4] = "G"
+plateau.grille[5][5] = "G"
 
-# Voiture violette
-plateau.grille[2][5] = "P"
-plateau.grille[3][5] = "P"
+# Violette
+plateau.grille[4][2] = "P"
+plateau.grille[5][2] = "P"
 
-# Voiture beige
-plateau.grille[4][5] = "B"
-plateau.grille[5][5] = "B"
+# Beige
+plateau.grille[4][1] = "B"
+plateau.grille[5][1] = "B"
 
-# Voiture orange
-plateau.grille[0][4] = "O"
-plateau.grille[0][5] = "O"
+# Orange
+plateau.grille[2][5] = "O"
+plateau.grille[3][5] = "O"
 
-# Voiture rose
-plateau.grille[2][3] = "S"
-plateau.grille[3][3] = "S"
+# Rose (violet horizontal sur l'image)
+plateau.grille[3][0] = "S"
+plateau.grille[3][1] = "S"
+plateau.grille[3][2] = "S"
 
-# Voiture bleue
-plateau.grille[2][2] = "L"
-plateau.grille[3][2] = "L"
+# Bleue
+plateau.grille[4][0] = "L"
+plateau.grille[5][0] = "L"
+
 gagne = False
 
 while gagne == False:
