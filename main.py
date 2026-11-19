@@ -1,12 +1,8 @@
 from plateau import Plateau
 from voiture import Voiture
 
+plateau = Plateau()
 
-
-
-# Rouge
-plateau.grille[2][0] = "R"
-plateau.grille[2][1] = "R"
 voiture_rouge = Voiture("rouge", 2, "H", 2, 0, "R")
 voiture_jaune = Voiture("jaune", 3, "H", 4, 1, "J")
 voiture_vert = Voiture("vert clair", 2, "V", 0, 1, "V")
@@ -21,97 +17,37 @@ voiture_bleue = Voiture("bleue", 2, "V", 2, 2, "L")
 voitures = [voiture_rouge, voiture_jaune, voiture_vert, voiture_noire, voiture_grise,
             voiture_violet, voiture_beige, voiture_orange, voiture_rose, voiture_bleue]
 
+voitures_par_symbole = {}
 for voiture in voitures:
     voiture.placer(plateau)
+    voitures_par_symbole[voiture.symbole] = voiture
 
-# Jaune
-plateau.grille[1][4] = "J"
-plateau.grille[2][4] = "J"
-plateau.grille[3][4] = "J"
-
-# Vert clair
-plateau.grille[1][2] = "V"
-plateau.grille[2][2] = "V"
-
-# Noire (turquoise)
-plateau.grille[4][4] = "N"
-plateau.grille[4][5] = "N"
-
-# Grise
-plateau.grille[5][4] = "G"
-plateau.grille[5][5] = "G"
-
-# Violette
-plateau.grille[4][2] = "P"
-plateau.grille[5][2] = "P"
-
-# Beige
-plateau.grille[4][1] = "B"
-plateau.grille[5][1] = "B"
-
-# Orange
-plateau.grille[2][5] = "O"
-plateau.grille[3][5] = "O"
-
-# Rose (violet horizontal sur l'image)
-plateau.grille[3][0] = "S"
-plateau.grille[3][1] = "S"
-plateau.grille[3][2] = "S"
-
-# Bleue
-plateau.grille[4][0] = "L"
-plateau.grille[5][0] = "L"
-
-plateau.grille[4][1] = "J"
-plateau.grille[4][2] = "J"
-
-plateau.grille[0][1] = "V"
-plateau.grille[1][1] = "V"
-
-plateau.grille[3][4] = "N"
-plateau.grille[4][4] = "N"
-
-plateau.grille[4][0] = "G"
-plateau.grille[5][0] = "G"
-
-plateau.grille[2][5] = "Vi"
-plateau.grille[3][5] = "Vi"
-
-plateau.grille[4][5] = "Be"
-plateau.grille[5][5] = "Be"
-
-plateau.grille[0][4] = "O"
-plateau.grille[0][5] = "O"
-
-plateau.grille[2][3] = "Rse"
-plateau.grille[3][3] = "Rse"
-
-plateau.grille[2][2] = "Bl"
-plateau.grille[3][2] = "Bl"
-
+DIRECTIONS = {
+    "H": {"gauche": -1, "droite": 1},
+    "V": {"haut": -1, "bas": 1},
+}
 
 gagne = False
 
 while gagne == False:
     plateau.afficher()
-    mouvement = input("Quelle voiture voulez-vous déplacer ? ")
+    choix = input("Quelle voiture voulez-vous déplacer ? (R, J, V, N, G, P, B, O, S, L) ").upper()
 
-    if mouvement == "R" or mouvement == "r":
-        direction = input("Dans quelle direction ? (gauche ou droite) ")
+    if choix not in voitures_par_symbole:
+        print("Pas possible : voiture inconnue")
+        continue
 
-        if direction == "gauche":
-            deplacement = -1
-        elif direction == "droite":
-            deplacement = 1
-        else:
-            deplacement = 0
-            print("Pas possible")
+    voiture = voitures_par_symbole[choix]
+    directions_possibles = DIRECTIONS[voiture.orientation]
+    texte = " ou ".join(directions_possibles)
+    direction = input("Dans quelle direction ? (" + texte + ") ").lower()
 
-        if deplacement != 0:
-            if not voiture_rouge.avancer(deplacement, plateau):
-                print("Pas possible : collision ou bord du plateau")
-    else:
-        print("Pas possible")
+    if direction not in directions_possibles:
+        print("Pas possible : direction invalide pour cette voiture")
+        continue
+
+    if voiture.avancer_jusqu_au_bout(directions_possibles[direction], plateau) == 0:
+        print("Pas possible : collision ou bord du plateau")
 
     if voiture_rouge.coordonnees_y == 4:
         gagne = True
