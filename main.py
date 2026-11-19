@@ -1,22 +1,28 @@
 from plateau import Plateau
 from voiture import Voiture
 
-plateau = Plateau()
-voiture_rouge = Voiture("rouge", 2, "H", 2, 0)
-voiture_jaune = Voiture("jaune", 3, "V", 1, 4)
-voiture_vert = Voiture("vert clair", 2, "V", 1, 2)
-voiture_noire = Voiture("noire", 2, "H", 4, 4)
-voiture_grise = Voiture("grise", 2, "H", 5, 4)
-voiture_violet = Voiture("violet", 2, "V", 4, 2)
-voiture_beige = Voiture("beige", 2, "V", 4, 1)
-voiture_orange = Voiture("orange", 2, "V", 2, 5)
-voiture_rose = Voiture("rose", 3, "H", 3, 0)
-voiture_bleue = Voiture("bleue", 2, "V", 4, 0)
+
 
 
 # Rouge
 plateau.grille[2][0] = "R"
 plateau.grille[2][1] = "R"
+voiture_rouge = Voiture("rouge", 2, "H", 2, 0, "R")
+voiture_jaune = Voiture("jaune", 3, "H", 4, 1, "J")
+voiture_vert = Voiture("vert clair", 2, "V", 0, 1, "V")
+voiture_noire = Voiture("noire", 2, "V", 3, 4, "N") #voiture noire = voiture verte foncee sur carte
+voiture_grise = Voiture("grise", 2, "V", 4, 0, "G")
+voiture_violet = Voiture("violet", 2, "V", 2, 5, "P")
+voiture_beige = Voiture("beige", 2, "V", 4, 5, "B")
+voiture_orange = Voiture("orange", 2, "H", 0, 4, "O")
+voiture_rose = Voiture("rose", 2, "V", 2, 3, "S")
+voiture_bleue = Voiture("bleue", 2, "V", 2, 2, "L")
+
+voitures = [voiture_rouge, voiture_jaune, voiture_vert, voiture_noire, voiture_grise,
+            voiture_violet, voiture_beige, voiture_orange, voiture_rose, voiture_bleue]
+
+for voiture in voitures:
+    voiture.placer(plateau)
 
 # Jaune
 plateau.grille[1][4] = "J"
@@ -66,18 +72,16 @@ while gagne == False:
         direction = input("Dans quelle direction ? (gauche ou droite) ")
 
         if direction == "gauche":
-            if voiture_rouge.coordonnees_y > 0:
-                voiture_rouge.avancer(-1, plateau)
-            else:
-                print("Pas possible")
-
-        if direction == "droite":
-            if voiture_rouge.coordonnees_y < 4:
-                voiture_rouge.avancer(1, plateau)
-            else:
-                print("Pas possible")
+            deplacement = -1
+        elif direction == "droite":
+            deplacement = 1
         else:
+            deplacement = 0
             print("Pas possible")
+
+        if deplacement != 0:
+            if not voiture_rouge.avancer(deplacement, plateau):
+                print("Pas possible : collision ou bord du plateau")
     else:
         print("Pas possible")
 
