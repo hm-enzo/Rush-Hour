@@ -14,37 +14,46 @@ voiture_rose = Voiture("rose", 2, "V", 2, 3)
 voiture_bleue = Voiture("bleue", 2, "V", 2, 2)
 
 
+# Voiture rouge
 plateau.grille[2][0] = "R"
 plateau.grille[2][1] = "R"
 
+# Voiture jaune
 plateau.grille[4][1] = "J"
 plateau.grille[4][2] = "J"
 plateau.grille[4][3] = "J"
 
+# Voiture vert clair
 plateau.grille[0][1] = "V"
 plateau.grille[1][1] = "V"
 
+# Voiture noire
 plateau.grille[3][4] = "N"
 plateau.grille[4][4] = "N"
 
+# Voiture grise
 plateau.grille[4][0] = "G"
 plateau.grille[5][0] = "G"
 
+# Voiture violette
 plateau.grille[2][5] = "P"
 plateau.grille[3][5] = "P"
 
+# Voiture beige
 plateau.grille[4][5] = "B"
 plateau.grille[5][5] = "B"
 
+# Voiture orange
 plateau.grille[0][4] = "O"
 plateau.grille[0][5] = "O"
 
-plateau.grille[2][3] = "RO"
-plateau.grille[3][3] = "RO"
+# Voiture rose
+plateau.grille[2][3] = "S"
+plateau.grille[3][3] = "S"
 
-plateau.grille[2][2] = "BL"
-plateau.grille[3][2] = "BL"
-
+# Voiture bleue
+plateau.grille[2][2] = "L"
+plateau.grille[3][2] = "L"
 gagne = False
 
 while gagne == False:
