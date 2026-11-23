@@ -49,6 +49,7 @@ class Voiture:
             self.coordonnees_y += nb_cases
         else:
             self.coordonnees_x += nb_cases
+        nb_mouvement+=1
         self.placer(plateau)
         return True
 
@@ -58,4 +59,5 @@ class Voiture:
             nb_cases += 1
         if nb_cases > 0:
             self.avancer(sens * nb_cases, plateau)
+        nb_mouvement+=1
         return nb_cases
