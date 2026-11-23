@@ -110,4 +110,4 @@ while gagne == False:
         gagne = True
 
 plateau.afficher()
-print("Vous avez gagné")
+print("Vous avez gagné en" + nb_mouvement + "mouvement!") #affiche victoire et le nombre de coups joués
