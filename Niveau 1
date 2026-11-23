@@ -60,7 +60,6 @@ plateau.grille[4][0] = "L"
 plateau.grille[5][0] = "L"
 
 
-
 Quantite_Voiture_Rouge=0
 Historique_Voiture=[]
 
