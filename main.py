@@ -1,23 +1,30 @@
 from plateau import Plateau
-from voiture import Voiture
+from Niveau_1 import creer_voitures
 
-Quantite_Voiture_Rouge=0
-Historique_Voiture=[]
+DIRECTIONS = {
+    "H": {"gauche": -1, "droite": 1},
+    "V": {"haut": -1, "bas": 1},
+}
 
-for Voiture_faite in Historique_Voiture:
-    if Voiture_faite.couleur=="rouge":
-        Quantite_Voiture_Rouge+=1
-assert Quantite_Voiture_Rouge==1, "Il y a plus d'une voiture rouge sur le plateau"
+voitures = creer_voitures()
+
+quantite_rouge = 0
+for v in voitures:
+    if v.couleur == "rouge":
+        quantite_rouge += 1
+assert quantite_rouge == 1, "Il doit y avoir exactement une voiture rouge sur le plateau"
 
 plateau = Plateau()
-voiture_rouge = Voiture("rouge", 2, "H", 2, 0)
+voitures_par_symbole = {}
+for v in voitures:
+    v.placer(plateau)
+    voitures_par_symbole[v.symbole] = v
 
-plateau.grille[2][0] = "R"
-plateau.grille[2][1] = "R"
+voiture_rouge = voitures_par_symbole["R"]
 
 gagne = False
 
-while gagne == False:
+while not gagne:
     plateau.afficher()
     choix = input("Quelle voiture voulez-vous déplacer ? (R, J, V, N, G, P, B, O, S, L) ").upper()
 
@@ -30,22 +37,13 @@ while gagne == False:
     texte = " ou ".join(directions_possibles)
     direction = input("Dans quelle direction ? (" + texte + ") ").lower()
 
-        if direction == "gauche":
-            if voiture_rouge.coordonnees_y > 0:
-                voiture_rouge.avancer(-1, plateau)
-            else:
-                print("Pas possible")
+    if direction not in directions_possibles:
+        print("Pas possible : direction invalide")
+        continue
 
-        if direction == "droite":
-            if voiture_rouge.coordonnees_y < 4:
-                voiture_rouge.avancer(1, plateau)
-            else:
-                print("Pas possible")
-        else:
-            print("Pas possible")
-    else:
-        print("Pas possible")
-        
+    if not voiture.avancer(directions_possibles[direction], plateau):
+        print("Pas possible : collision ou bord du plateau")
+
     if voiture_rouge.coordonnees_y == 4:
         gagne = True
 
