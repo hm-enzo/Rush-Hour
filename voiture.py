@@ -7,11 +7,10 @@ class Voiture:
         self.symbole = symbole
         self.taille = taille
         self.orientation = orientation
-        self.coordonnees_x = coordonnees_x  # ligne
-        self.coordonnees_y = coordonnees_y  # colonne
+        self.coordonnees_x = coordonnees_x
+        self.coordonnees_y = coordonnees_y
 
     def cases(self, x=None, y=None):
-        """Liste des (ligne, colonne) occupées par la voiture (à une position donnée)."""
         if x is None:
             x = self.coordonnees_x
         if y is None:
@@ -29,7 +28,6 @@ class Voiture:
             plateau.grille[ligne][colonne] = VIDE
 
     def peut_avancer(self, nb_cases, plateau):
-        """Collision : False si la voiture sort du plateau ou touche une autre voiture."""
         if self.orientation == "H":
             nouvelles_cases = self.cases(y=self.coordonnees_y + nb_cases)
         else:
@@ -44,7 +42,6 @@ class Voiture:
         return True
 
     def avancer(self, nb_cases, plateau):
-        """Déplace la voiture si possible. Renvoie True si elle a bougé, False sinon."""
         if not self.peut_avancer(nb_cases, plateau):
             return False
         self.effacer(plateau)
@@ -56,8 +53,6 @@ class Voiture:
         return True
 
     def avancer_jusqu_au_bout(self, sens, plateau):
-        """Avance (sens = -1 ou 1) jusqu'au mur ou à la prochaine voiture.
-        Renvoie le nombre de cases parcourues (0 si bloquée tout de suite)."""
         nb_cases = 0
         while self.peut_avancer(sens * (nb_cases + 1), plateau):
             nb_cases += 1
