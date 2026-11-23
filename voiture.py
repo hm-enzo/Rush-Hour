@@ -50,6 +50,6 @@ class Voiture:
             self.coordonnees_y += nb_cases
         else:
             self.coordonnees_x += nb_cases
-        self.nb_mouvement+=1 
+        nb_mouvement+=1 
         self.placer(plateau)
         return True
