@@ -7,9 +7,9 @@ DIRECTIONS = {
 }
 
 voitures = creer_voitures()
-
+nb_mouvement=0 #compte le nombre de mouvements effectués
 quantite_rouge = 0
-for v in voitures:
+for v in voitures: #parcourt dans les le tableau avec toutes les voitures du plateau
     if v.couleur == "rouge":
         quantite_rouge += 1
 assert quantite_rouge == 1, "Il doit y avoir exactement une voiture rouge sur le plateau"
