@@ -1,12 +1,21 @@
 from plateau import Plateau
 from Niveau_1 import creer_voitures
+from Niveau_1 import creer_voitures2
 
 DIRECTIONS = {
     "H": {"gauche": -1, "droite": 1},
     "V": {"haut": -1, "bas": 1},
 }
 
-voitures = creer_voitures()
+NIVEAUX = {"1": creer_voitures, "2": creer_voitures2}
+
+niveau = ""
+while niveau not in NIVEAUX:
+    niveau = input("Quel niveau voulez-vous jouer ? (1 ou 2) ").strip()
+    if niveau not in NIVEAUX:
+        print("Niveau inconnu, choisissez 1 ou 2")
+
+voitures = NIVEAUX[niveau]()
 quantite_rouge = 0
 for v in voitures: #parcourt dans les le tableau avec toutes les voitures du plateau
     if v.couleur == "rouge":
