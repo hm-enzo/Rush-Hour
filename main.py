@@ -58,8 +58,8 @@ while not gagne:
 plateau.afficher()
 nb_mouvement = sum(v.mouvement for v in voitures)
 print("Vous avez gagné en", nb_mouvement, "mouvements")
-    if voiture_rouge.coordonnees_y == 4:
-        gagne = True
+if voiture_rouge.coordonnees_y == 4:
+    gagne = True
 
 plateau.afficher()
 print("Vous avez gagné")
