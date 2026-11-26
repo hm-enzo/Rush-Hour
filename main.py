@@ -7,7 +7,6 @@ DIRECTIONS = {
 }
 
 voitures = creer_voitures()
-nb_mouvement=0 #compte le nombre de mouvements effectués
 quantite_rouge = 0
 for v in voitures: #parcourt dans les le tableau avec toutes les voitures du plateau
     if v.couleur == "rouge":
@@ -41,17 +40,24 @@ while not gagne:
         print("Pas possible : direction invalide")
         continue
 
-    nombre_cases = int(input("De combien de cases voulez vous déplacer la voiture ?"))
+     nombre_cases = int(input("De combien de cases voulez vous déplacer la voiture ?"))
 
     for i in range(nombre_cases):
         if not voiture.avancer(directions_possibles[direction], plateau):
             print("Pas possible : collision ou bord du plateau")
             break
         nb_mouvement+=1
-    
+        
     if not voiture.avancer(directions_possibles[direction], plateau):
         print("Pas possible : collision ou bord du plateau")
+        continue
 
+    if voiture_rouge.coordonnees_y == 4:
+        gagne = True
+
+plateau.afficher()
+nb_mouvement = sum(v.mouvement for v in voitures)
+print("Vous avez gagné en", nb_mouvement, "mouvements")
     if voiture_rouge.coordonnees_y == 4:
         gagne = True
 
