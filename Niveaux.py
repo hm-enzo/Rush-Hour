@@ -1,7 +1,7 @@
 from voiture import Voiture
 
 
-def creer_voitures():
+def niveau1():
     return [
         Voiture("rouge", 2, "H", 2, 0, "R"),
         Voiture("jaune", 3, "H", 4, 1, "J"),
@@ -14,7 +14,7 @@ def creer_voitures():
         Voiture("rose", 2, "V", 2, 3, "S"),
         Voiture("bleue", 2, "V", 2, 2, "L"),
     ]
-def creer_voitures2():
+def niveau2():
     return [
         Voiture("rouge", 2, "H", 2, 2, "R"),
         Voiture("jaune", 3, "H", 1, 3, "J"),
@@ -29,7 +29,7 @@ def creer_voitures2():
     ]
 
 
-def creer_voitures3():
+def niveau3():
     return [
         Voiture("rouge", 2, "H", 2, 1, "R"),
         Voiture("jaune", 3, "V", 0, 3, "J"),
