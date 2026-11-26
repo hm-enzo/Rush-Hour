@@ -1,0 +1,21 @@
+import tkinter
+
+jeu= tkinter.Tk()
+jeu.title("Rush Hour")
+jeu.geometry("300x300")
+score= tkinter.Label(
+    jeu,
+    text="Score : ",
+    font=("Times New Roman",14,"bold"),
+    fg="red"
+)
+score.grid(row=2,column=1)
+plateau=tkinter.Canvas(jeu,width=200,height=200,bg="black")
+plateau.grid(row=4,column=4)
+for i in range(0,6):
+    position = i * 50
+    plateau.create_line(position,0,position,300,fill="white",width=3)
+    plateau.create_line(0,position,300,position,fill="white",width=3)
+
+
+jeu.mainloop()
