@@ -1,19 +1,20 @@
 from plateau import Plateau
 from Niveau_1 import creer_voitures
 from Niveau_1 import creer_voitures2
+from Niveau_1 import creer_voitures3
 
 DIRECTIONS = {
     "H": {"gauche": -1, "droite": 1},
     "V": {"haut": -1, "bas": 1},
 }
 
-NIVEAUX = {"1": creer_voitures, "2": creer_voitures2}
+NIVEAUX = {"1": creer_voitures, "2": creer_voitures2,"3": creer_voitures3}
 
 niveau = ""
 while niveau not in NIVEAUX:
-    niveau = input("Quel niveau voulez-vous jouer ? (1 ou 2) ").strip()
+    niveau = input("Quel niveau voulez-vous jouer ? (1 ou 2 ou 3) ").strip()
     if niveau not in NIVEAUX:
-        print("Niveau inconnu, choisissez 1 ou 2")
+        print("Niveau inconnu, choisissez 1 ou 2 ou 3")
 
 voitures = NIVEAUX[niveau]()
 quantite_rouge = 0
