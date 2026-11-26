@@ -49,6 +49,14 @@ while not gagne:
         print("Pas possible : direction invalide")
         continue
 
+     nombre_cases = int(input("De combien de cases voulez vous déplacer la voiture ?"))
+
+    for i in range(nombre_cases):
+        if not voiture.avancer(directions_possibles[direction], plateau):
+            print("Pas possible : collision ou bord du plateau")
+            break
+        nb_mouvement+=1
+        
     if not voiture.avancer(directions_possibles[direction], plateau):
         print("Pas possible : collision ou bord du plateau")
         continue
