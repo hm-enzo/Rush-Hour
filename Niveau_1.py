@@ -28,3 +28,18 @@ def creer_voitures2():
         Voiture("bleue", 2, "V", 4, 0, "L"),
     ]
 
+
+def creer_voitures3():
+    return [
+        Voiture("rouge", 2, "H", 2, 1, "R"),
+        Voiture("jaune", 3, "V", 0, 3, "J"),
+        Voiture("bleue clair", 2, "H", 0, 0, "V"),
+        Voiture("turquoise", 2, "H", 4, 0, "N"),
+        Voiture("grise", 2, "H", 5, 0, "G"),
+        Voiture("violet", 3, "V", 2, 5, "P"),
+        Voiture("bleue foncée", 2, "H", 3, 3, "B"),
+        Voiture("orange", 2, "V", 0, 4, "O"),
+        Voiture("rose", 2, "V", 2, 0, "S"),
+        Voiture("bleue", 3, "V", 3, 2, "L"),
+    ]
+
