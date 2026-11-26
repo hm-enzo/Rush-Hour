@@ -1,7 +1,7 @@
 from plateau import Plateau
-from Niveau_1 import creer_voitures
-from Niveau_1 import creer_voitures2
-from Niveau_1 import creer_voitures3
+from Niveaux import niveau1
+from Niveaux import niveau2
+from Niveaux import niveau3
 
 DIRECTIONS = {
     "H": {"gauche": -1, "droite": 1},
