@@ -2,13 +2,14 @@ from plateau import VIDE
 
 
 class Voiture:
-    def __init__(self, couleur, taille, orientation, coordonnees_x, coordonnees_y, symbole):
+    def __init__(self, couleur, taille, orientation, coordonnees_x, coordonnees_y, symbole, nb_mouvement=0):
         self.couleur = couleur
         self.symbole = symbole
         self.taille = taille
         self.orientation = orientation
         self.coordonnees_x = coordonnees_x
         self.coordonnees_y = coordonnees_y
+        self.mouvement = nb_mouvement
 
     def cases(self, x=None, y=None):
         if x is None:
@@ -27,12 +28,7 @@ class Voiture:
         for ligne, colonne in self.cases():
             plateau.grille[ligne][colonne] = VIDE
 
-    def peut_avancer(self, nb_cases, plateau):
-        if self.orientation == "H":
-            nouvelles_cases = self.cases(y=self.coordonnees_y + nb_cases)
-        else:
-            nouvelles_cases = self.cases(x=self.coordonnees_x + nb_cases)
-
+    def _cases_libres(self, nouvelles_cases, plateau):
         for ligne, colonne in nouvelles_cases:
             if not (0 <= ligne < 6 and 0 <= colonne < 6):
                 return False
@@ -41,15 +37,27 @@ class Voiture:
                 return False
         return True
 
+    def peut_avancer(self, nb_cases, plateau):
+        # On vérifie chaque position intermédiaire pour ne pas "sauter" par-dessus une voiture
+        pas = 1 if nb_cases > 0 else -1
+        for i in range(pas, nb_cases + pas, pas):
+            if self.orientation == "H":
+                nouvelles_cases = self.cases(y=self.coordonnees_y + i)
+            else:
+                nouvelles_cases = self.cases(x=self.coordonnees_x + i)
+            if not self._cases_libres(nouvelles_cases, plateau):
+                return False
+        return True
+
     def avancer(self, nb_cases, plateau):
-        if not self.peut_avancer(nb_cases, plateau):
+        if nb_cases == 0 or not self.peut_avancer(nb_cases, plateau):
             return False
         self.effacer(plateau)
         if self.orientation == "H":
             self.coordonnees_y += nb_cases
         else:
             self.coordonnees_x += nb_cases
-        nb_mouvement+=1
+        self.mouvement += 1
         self.placer(plateau)
         return True
 
@@ -58,6 +66,5 @@ class Voiture:
         while self.peut_avancer(sens * (nb_cases + 1), plateau):
             nb_cases += 1
         if nb_cases > 0:
-            self.avancer(sens * nb_cases, plateau)
-        nb_mouvement+=1
+            self.avancer(sens * nb_cases, plateau)  # compte déjà 1 mouvement
         return nb_cases

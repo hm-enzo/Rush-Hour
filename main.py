@@ -7,7 +7,6 @@ DIRECTIONS = {
 }
 
 voitures = creer_voitures()
-nb_mouvement=0 #compte le nombre de mouvements effectués
 quantite_rouge = 0
 for v in voitures: #parcourt dans les le tableau avec toutes les voitures du plateau
     if v.couleur == "rouge":
@@ -43,9 +42,11 @@ while not gagne:
 
     if not voiture.avancer(directions_possibles[direction], plateau):
         print("Pas possible : collision ou bord du plateau")
+        continue
 
     if voiture_rouge.coordonnees_y == 4:
         gagne = True
 
 plateau.afficher()
-print("Vous avez gagné")
+nb_mouvement = sum(v.mouvement for v in voitures)
+print("Vous avez gagné en", nb_mouvement, "mouvements")
